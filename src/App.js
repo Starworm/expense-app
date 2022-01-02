@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Navbar from "./components/Navbar/Navbar";
+import {Route} from "react-router-dom";
+import MainScreen from "./components/mainScreen/MainScreen";
+import ChartScreen from "./components/chartScreen/ChartScreen";
+import { AppProvider } from "./service/categoryService.tsx";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <AppProvider>
+            <div className='container'>
+                <h1 className='mt-3'>Expense Planner</h1>
+                <Navbar/>
+                <div>
+                    <Route path='/home' component={MainScreen} />
+                    <Route path='/charts' component={ChartScreen} />
+                </div>
+            </div>
+        </AppProvider>
+    );
 }
+
 
 export default App;
